@@ -4,6 +4,8 @@ import (
 	"chat/pkg/websocket"
 	"fmt"
 	"net/http"
+
+	"github.com/google/uuid"
 )
 
 func serveWs(pool *websocket.Pool, w http.ResponseWriter, r *http.Request) {
@@ -12,7 +14,8 @@ func serveWs(pool *websocket.Pool, w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "%+v\n", err)
 		return
 	}
-	client := &websocket.Client{Conn: conn, Pool: pool}
+	clientID := uuid.New().String()
+	client := &websocket.Client{ID: clientID, Conn: conn, Pool: pool}
 	pool.Register <- client
 	client.Read()
 }

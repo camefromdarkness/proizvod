@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { sendMsg } from "../api";
 
-export default function ChatInput() {
+interface Props {
+  username: string;
+  disabled?: boolean;
+}
+
+export default function ChatInput({ username, disabled = false }: Props) {
   const [value, setValue] = useState<string>("");
 
   const handleSend = (): void => {
-    if (!value.trim()) return;
-    sendMsg(value);
+    if (!value.trim() || disabled) return;
+    sendMsg(value, username);
     setValue("");
   };
 
@@ -16,9 +21,10 @@ export default function ChatInput() {
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && handleSend()}
-        placeholder="Type a message..."
+        placeholder={disabled ? "Ожидание второго пользователя..." : "Напишите сообщение..."}
+        disabled={disabled}
       />
-      <button onClick={handleSend}>Send</button>
+      <button onClick={handleSend} disabled={disabled}>Отправить</button>
     </div>
   );
 }

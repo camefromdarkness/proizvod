@@ -3,6 +3,7 @@
 body { background: #1a1a1a; color: #fff; font-family: sans-serif; }
 
 .app {
+  min-width: 600px;
   max-width: 600px;
   margin: 40px auto;
   display: flex;
@@ -19,12 +20,55 @@ body { background: #1a1a1a; color: #fff; font-family: sans-serif; }
   background: #2a2a2a;
   padding: 16px;
   border-radius: 8px;
+  align-items: stretch;
 }
 
 .message {
   background: #3a3a3a;
+  padding: 6px 10px;
+  border-radius: 8px;
+  max-width: 80%;
+  min-width: 140px;
+  text-align: left;
+  display: block;
+  word-break: break-word;
+}
+
+.message.me {
+  margin-left: auto;
+  background: linear-gradient(135deg, #6c63ff, #5a54e6);
+  max-width: 80%;
+  min-width: 140px;
   padding: 8px 12px;
+}
+
+.message-sender {
+  font-size: 12px;
+  color: #d0d0d0;
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+.message-body {
+  font-size: 14px;
+  color: #fff;
+  line-height: 1.25;
+  text-align: left;
+}
+
+/* Smaller appearance for other users' messages */
+.message:not(.me) {
+  max-width: 56%;
+  padding: 5px 8px;
   border-radius: 6px;
+  background: #2f2f2f;
+  font-size: 13px;
+}
+
+.message:not(.me) .message-sender {
+  font-size: 11px;
+  color: #cfcfcf;
+  margin-bottom: 3px;
 }
 
 .input-area {
@@ -49,4 +93,89 @@ body { background: #1a1a1a; color: #fff; font-family: sans-serif; }
   border-radius: 6px;
   color: #fff;
   cursor: pointer;
+}
+
+.username-overlay {
+  margin: 80px auto;
+  max-width: 420px;
+  background: #252525;
+  padding: 24px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.username-overlay h2 {
+  font-size: 18px;
+  text-align: center;
+}
+
+.username-overlay input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #1f1f1f;
+  color: #fff;
+}
+
+.username-overlay button {
+  padding: 10px;
+  border-radius: 6px;
+  background: #6c63ff;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.status {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.status-waiting {
+  color: #ffa500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.status-ready {
+  color: #4ade80;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.connecting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 18px;
+}
+
+.input-area input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: #1f1f1f;
+}
+
+.input-area button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
