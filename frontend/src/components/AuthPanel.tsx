@@ -79,7 +79,7 @@ export default function AuthPanel({ error, onError, onAuthenticated }: AuthPanel
           type="button"
           onClick={() => setAuthMode(authMode === "login" ? "register" : "login")}
         >
-          {authMode === "login" ? "Нужна регистрация" : "Уже есть аккаунт"}
+          {authMode === "login" ? "Зарегистрироваться" : "Уже есть аккаунт"}
         </button>
       </section>
     </main>

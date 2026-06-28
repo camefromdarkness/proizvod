@@ -75,7 +75,6 @@ export default function App() {
   useEffect(() => {
     if (!token || !activeChatId) return;
     connection.current?.close();
-    setMessages([]);
     getMessages(token, activeChatId).then(setMessages).catch(showError);
     connection.current = connectChat(token, activeChatId, handleChatEvent, setSocketStatus);
     return () => connection.current?.close();
